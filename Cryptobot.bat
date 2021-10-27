@@ -1,0 +1,1 @@
+"C:\Users\benlu\Desktop\Bots\Crypto\env\Scripts\python.exe" "C:\Users\benlu\Desktop\Bots\Crypto\Bot.py"
