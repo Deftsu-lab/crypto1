@@ -68,7 +68,7 @@ def strat(pair, qty, open_position=False):
         print(f'current Close ' + str(df.Close.iloc[-1]))
         print(f'current Target ' + str(buyprice * 1.005))
         print(f'current Stop is ' + str(buyprice * 0.995))
-        if df.Close[-1] <= buyprice * 0.995 or df.Close[-1] >= 1.005 * buyprice:
+        if df.Close[-1] <= buyprice * 0.99 or df.Close[-1] >= 1.005 * buyprice:
              order = client.create_order(symbol=pair, 
                                     side='SELL', 
                                     type='MARKET', 
@@ -77,5 +77,5 @@ def strat(pair, qty, open_position=False):
              break
 
 while True:
-    strat('ADAUSDT', 10)
+    strat('ADAUSDT', 20)
     time.sleep(0.5)
