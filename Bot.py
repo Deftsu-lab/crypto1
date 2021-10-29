@@ -3,10 +3,12 @@ import pandas as pd
 import ta
 import numpy as np
 import time
+import datetime
 
 api_key = "C7nnYvPJ1ME9AK6WcusR9j60JMMQ0azIx9AlHeChans0JSiXlBY7ynVJHHMfAZC5";
 api_secret = "bgeM4aOdP9k4QSnqILrg8S6me2hrp1VkRElrVcW8WZ0BPKQJ0OTNEGi8KhzrGWHy";
-
+ts = time.time()
+st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 client = Client(api_key, api_secret);
 
 def getminutedata(symbol, interval, lookback):
@@ -49,9 +51,9 @@ class Signals:
 def strat(pair, qty, open_position=False):
     df = getminutedata(pair, '1m', '100')
     applytechnicals(df)
-    inst = Signals(df, 10)
+    inst = Signals(df, 30)
     inst.decide()
-    print(f'current Close of {pair} is ' + str(df.Close.iloc[-1]))
+    print(f'{st}: current Close of {pair} is ' + str(df.Close.iloc[-1]))
     if df.Buy.iloc[-1]:
         order = client.create_order(symbol=pair, 
                                     side='BUY', 
