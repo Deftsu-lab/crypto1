@@ -51,7 +51,7 @@ class Signals:
 def strat(pair, qty, open_position=False):
     df = getminutedata(pair, '1m', '100')
     applytechnicals(df)
-    inst = Signals(df, 30)
+    inst = Signals(df, 5)
     inst.decide()
     print(f'{st}: current Close of {pair} is ' + str(df.Close.iloc[-1]))
     if df.Buy.iloc[-1]:
