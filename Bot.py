@@ -4,12 +4,12 @@ import ta
 import numpy as np
 import time
 import datetime
+import config
 
-api_key = "C7nnYvPJ1ME9AK6WcusR9j60JMMQ0azIx9AlHeChans0JSiXlBY7ynVJHHMfAZC5";
-api_secret = "bgeM4aOdP9k4QSnqILrg8S6me2hrp1VkRElrVcW8WZ0BPKQJ0OTNEGi8KhzrGWHy";
+
 ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
-client = Client(api_key, api_secret);
+client = Client(config.api_key, config.api_secret);
 
 def getminutedata(symbol, interval, lookback):
     frame = pd.DataFrame(client.get_historical_klines(symbol, interval, lookback + 'min ago UTC'))
